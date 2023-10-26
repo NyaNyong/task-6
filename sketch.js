@@ -3,12 +3,15 @@ class mover {
     this.position = createVector(0,height/2);
     this.velocity = createVector(0,0);
     this.acceleration = createVector(0,0);
+    this.mass = 10;
   }
 
 
 
   applyForce(force) {
-    this.acceleration.add(force);
+    let f = force.copy();
+    f.div(this.mass);
+    this.acceleration.add(f);
   }
 
   update() {
